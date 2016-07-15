@@ -27,14 +27,23 @@ tmux_conf_battery_status=true
 # then uncomment the following line to make Meta + arrow keys mapping work
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 set -g terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
-
+set -g status-interval 0
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
 #
 # # Setup 'v' to begin selection as in Vim
 bind-key -t vi-copy v begin-selection
 bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key C-s set-window-option synchronize-panes
 #
 # # Update default binding of `Enter` to also use copy-pipe
 unbind -t vi-copy Enter
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+set -g history-limit 5000
+
+tmux_conf_theme_prefix=enabled
+tmux_conf_theme_time=enabled
+tmux_conf_theme_date=enabled
+tmux_conf_theme_username=ssh
+tmux_conf_theme_hostname=ssh
+
